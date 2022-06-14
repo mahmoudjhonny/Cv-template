@@ -8,6 +8,10 @@
     --text-black-700: #504e70;
 }
 
+::selection{ 
+    pointer-events: none;
+}
+
 body {
     scroll-behavior: smooth;
 }
@@ -18,10 +22,6 @@ body.dark {
         --bg-black-50: #393939;
         --text-black-900: #ffffff;
         --text-black-700: #e9e9e9;
-}
-
-.hidden {
-    display: none !important;
 }
 
 body {
