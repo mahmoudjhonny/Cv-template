@@ -12,10 +12,6 @@
     pointer-events: none;
 }
 
-body {
-    scroll-behavior: smooth;
-}
-
 body.dark {
         --bg-black-900: #151515;
         --bg-black-100: #222222;
@@ -52,10 +48,34 @@ ul{
     display: block;
     padding: 0px 30px;
     opacity: 1;
+    position: fixed;
+    left: 270px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: all 0.3s ease;
 }
 
-.main-content {
-    padding-left: 270px;
+.section.back-section{
+    z-index: 1;
+}
+
+.section.active {
+    z-index: 2;
+    opacity: 1;
+    animation: sideSection 1s ease;
+}
+
+@keyframes sideSection {
+    0% {
+        transform:translateX(100%);
+    }
+    100% {
+        transform:translateX(0%);
+    }
 }
 
 .padd-15 {
@@ -152,6 +172,7 @@ ul{
     align-items: center;
     top: 0;
     z-index: 10;
+    transition: all 0.3s ease;
 }
 
 .aside .logo {
@@ -161,7 +182,7 @@ ul{
     text-transform: capitalize;
 }
 
-.aside .logo a{
+.aside .logo p{
     position: relative;
     color: var(--text-black-900);
     font-weight: 700;
@@ -170,12 +191,12 @@ ul{
     letter-spacing: 5px;
 }
 
-.aside .logo a span {
+.aside .logo p span {
     font-family: 'Clicker Script', cursive;
     font-size: 40px;
 }
 
-.aside .logo a::before {
+.aside .logo p::before {
     content: "";
     position: absolute;
     width: 20px;
@@ -186,7 +207,7 @@ ul{
     left: 0;
 }
 
-.aside .logo a::after {
+.aside .logo p::after {
     content: "";
     position: absolute;
     width: 20px;
@@ -210,6 +231,7 @@ ul{
     display: none;
     align-items: center;
     justify-content: center;
+    transition: all 0.3s ease;
 }
 
 .aside .nav-toggler span {
@@ -218,6 +240,10 @@ ul{
     background: var(--skin-color);
     display: inline-block;
     position: relative;
+}
+
+.aside .nav-toggler .open span {
+    background-color: transparent;
 }
 
 .aside .nav-toggler span::before {
@@ -230,6 +256,11 @@ ul{
     left: 0;
 }
 
+.aside .nav-toggler.open span:before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
 .aside .nav-toggler span::after {
     content: '';
     height: 1px;
@@ -238,6 +269,11 @@ ul{
     position: absolute;
     top: 6px;
     left: 0;
+}
+
+.aside .nav-toggler.open span:after {
+    transform: rotate(-45deg);
+    top: 0;
 }
 
 .aside .nav {
@@ -363,7 +399,7 @@ h3.my-proffesional {
 }
 
 .about .about-content .about-text p {
-    font-size: 16px;
+    font-size: 15px;
     line-height: 25px;
     color: var(--text-black-700);
 }
@@ -399,7 +435,6 @@ h3.my-proffesional {
 }
 
 .about .about-content .personnal-info .button .btn {
-    margin-right: 15px;
     margin-top: 10px;
 }
 
@@ -632,6 +667,17 @@ h3.my-proffesional {
     display: block;
 }
 
+.portfolio .portfolio-item h4 {
+    padding: 10px 0 0 10px;    
+    font-size: 18px;
+    color: var(--text-black-900);
+    font-weight: 700;
+    text-transform: capitalize;
+}
+.portfolio .portfolio-item .proj {
+    margin: 20px 10px 10px 27px;    
+}
+
 /* contact me */
 .contact-title {
     color: var(--skin-color);
@@ -723,11 +769,28 @@ h3.my-proffesional {
 }
 
 @media (max-width: 1199px) {
+    .section .container {
+        padding-top: 70px;
+    }
+
     .aside {
         left: -270px;
     }
-    .main-content {
-        padding-left: 0;
+    .aside.open {
+         left: 0;
+    }
+    .aside .nav-toggler {
+        display:flex;
+        left: 30px;
+    }
+    .aside .nav-toggler.open {
+        left: 300px;
+    }
+    .section {
+        left: 0;
+    }
+    .section.open {
+        left:270px;
     }
     .about .about-content .personnal-info .info-item p span {
         display: block;
