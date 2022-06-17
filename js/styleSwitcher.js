@@ -25,16 +25,33 @@ const setActiveStyle = (color) => {
 
 // dark Mood
 const dayNight = document.querySelector(".day-night");
-dayNight.addEventListener("click", () => {
+let darkMode = localStorage.getItem("dark-mode");
+
+const enableDarkMode = () => {
+  document.body.classList.add("dark");
+  localStorage.setItem("dark-mode", "true");
+};
+
+const disableDarkMode = () => {
+  document.body.classList.remove("dark");
+  localStorage.setItem("dark-mode", "false");
+};
+
+if (darkMode === "true") {
+  enableDarkMode();
+}
+
+dayNight.addEventListener("click", (e) => {
+  darkMode = localStorage.getItem("dark-mode");
   dayNight.querySelector("i").classList.toggle("fa-sun");
   dayNight.querySelector("i").classList.toggle("fa-moon");
-  document.body.classList.toggle("dark");
+  if (darkMode === "false") {
+    enableDarkMode();
+  } else {
+    disableDarkMode();
+  }
 });
 
 window.addEventListener("load", () => {
-  if (document.body.classList.contains("dark")) {
-    dayNight.querySelector("i").classList.add("fa-sun");
-  } else {
-    dayNight.querySelector("i").classList.add("fa-moon");
-  }
+  dayNight.querySelector("i").classList.add("fa-moon");
 });
