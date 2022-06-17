@@ -694,8 +694,8 @@ h3.my-proffesional {
 }
 
 .contact .contact-info-item {
-    flex: 0 0 25%;
-    max-width: 25%;
+    flex: 0 0 50%;
+    max-width: 50%;
     text-align: center;
     margin-bottom: 60px;
 }
@@ -800,7 +800,6 @@ h3.my-proffesional {
 }
 
 @media (max-width: 991px) {
-    .contact .contact-info-item,
     .portfolio .portfolio-item, 
     .service .service-item{
         flex: 0 0 50%;
